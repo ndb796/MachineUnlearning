@@ -1,19 +1,29 @@
-## Toward Realistic Machine Unlearning Benchmarks: <br> Forgetting the Personal Identities in Classification Systems
-* This repository offers **practical benchmark datasets** and **PyTorch implementations for Machine Unlearning**, enabling privacy-preserving AI practices by forgetting specific data instances without altering the model's core functionality.
+### Towards Machine Unlearning Benchmarks: Forgetting the Personal Identities in Facial Recognition Systems
+* This repository provides **practical benchmark datasets** and **PyTorch implementations for Machine Unlearning**, enabling the construction of privacy-crucial AI systems by forgetting specific data instances without changing the original model utility.
 
-<p align="center">
-  <img src="./resources/MachineUnlearning_concept.png" width="110%"/>
-</p>
-
-## Authors
+### Authors
 [Dasol Choi](https://github.com/Dasol-Choi), [Dongbin Na](https://github.com/ndb796)
 
+#### Abstract
+> Machine unlearning is a crucial tool for enabling a classification model to forget specific data that are used in the training time. Recently, various studies have presented machine unlearning algorithms and evaluated their methods on several datasets. However, most of the current machine unlearning algorithms have been evaluated solely on traditional computer vision datasets such as CIFAR-10, MNIST, and SVHN. Furthermore, previous studies generally evaluate the unlearning methods in the class-unlearning setup. Most previous work first trains the classification models and then evaluates the machine unlearning performance of machine unlearning algorithms by forgetting selected image classes (categories) in the experiments. Unfortunately, **these class-unlearning settings might not generalize to real-world scenarios.** In this work, we propose a machine unlearning setting that aims to unlearn specific instance that contains personal privacy (identity) **while maintaining the original task of a given model.** Specifically, we propose two machine unlearning benchmark datasets, **MUFAC** and **MUCAC**, that are greatly useful to evaluate the performance and robustness of a machine unlearning algorithm. In our benchmark datasets, the original model performs facial feature recognition tasks: face age estimation (multi-class classification) and facial attribute classification (binary class classification), where a class does not depend on any single target subject (personal identity), which can be a realistic setting. Moreover, we also report **the performance of the state-of-the-art machine unlearning methods on our proposed benchmark datasets.**
 
-## Abstract
-> Machine Unlearning is a crucial tool for enabling a classification model to forget specific data that are used in the training time. Recently, various studies have presented machine unlearning algorithms and evaluated their methods on several datasets. However, most of the current machine unlearning algorithms have been evaluated solely on traditional computer vision datasets such as CIFAR-10, MNIST, and SVHN. Furthermore, we note that previous work generally evaluates the unlearning methods in the class-unlearning setup. Most previous work first trains the classification models and then evaluates the machine unlearning performance of machine unlearning algorithms by forgetting selected image classes(categories) in the experiments. Unfortunately, **these class-unlearning settings might not generalize to real-world scenarios**. For example, class-unlearning can not be applied to even simple binary classification tasks. This issue is induced by the phenomenon the task that the model solves is directly linked to the target subject to unlearn in the class-unlearning setting. In this work, we propose **a machine unlearning setting that aims to unlearn specific instance that contains personal privacy (identity) while maintaining the original task of a given model, which can be realistic.** Specifically, we propose **two machine unlearning benchmark datasets**, **MUFAC** and **MUCAC**, that are greatly useful to evaluate the performance and robustness of a machine unlearning algorithm. In our benchmark datasets, the original model performs **facial feature recognition tasks: age estimation (multi-class classification) and gender classification (binary class classification)**, where a class does not depend on any single target subject (personal identity). Moreover, we also report **the performance of the state-of-the-art machine unlearning methods on our proposed benchmark dataset.**
+#### <b>Task-Agnostic Machine Unlearning</b>
 
-## Datasets
-* [**MUFAC** (Machine Unlearning for Facial Age Classifier)](https://github.com/ndb796/korean_family_dataset)
+* The conceptual illustration of our proposed task-agnostic unlearning setup:
+
+<img src="./resources/image_2.jpg" width=720px/>
+
+* Comparison with the traditional class-unlearning:
+
+<img src="./resources/image_1.jpg" width=720px/>
+
+#### Datasets
+
+* The illustration of our MUFAC benchmark:
+
+<img src="./resources/image_3.jpg" width=360px/>
+
+* [**MUFAC** (Machine Unlearning for Facial Age Classifier)](https://postechackr-my.sharepoint.com/:u:/g/personal/dongbinna_postech_ac_kr/EbMhBPnmIb5MutZvGicPKggBWKm5hLs0iwKfGW7_TwQIKg)
   * A multi-class age classification dataset based on AI HUB, featuring over 13,000 Asian facial images with annotations for age groups and personal identities, ideal for machine unlearning research.
  <p align="center"><img src="./resources/MUFAC.png" style="width: 90%;"/></p>
  
@@ -21,19 +31,20 @@
   * A multi-label facial attribute classification dataset based on CelebA, expanded to 30,000 images and enriched with personal identity annotations to support unlearning algorithms.
  <p align="center"><img src="./resources/MUCAC.png" style="width: 90%; ;"/></p>
 
-## Evaluation Metrics
+#### Evaluation Metrics
+
 Our machine unlearning Benchmark is evaluated on two key aspects: **model utility** and **forgetting performance**. Here's how we measure them:
+
 * **Model Utility**
-  - **Accuracy**: The primary metric for model utility is the accuracy of the classification task, defined as the likelihood of the model's predictions matching the true labels in the test dataset.
+  - **Accuracy**: The primary metric for model utility is the accuracy of the classification task, defined as the probability of the model's predictions matching the true labels in the test dataset.
 
 * **Forgetting Score**
-  - **Membership Inference Attack (MIA)**: To assess how well the model forgets, we use MIA, where the goal is to infer if specific data was used during training. A binary classifier is trained to distinguish between data meant to be forgotten and unseen data, with the ideal accuracy being 0.5, indicating perfect unlearning.
+  - **Membership Inference Attack (MIA)**: To assess how well the model forgets, we use MIA, where the goal is to infer if specific data was used during training. A binary classifier is trained to distinguish between (1) data to be forgotten and (2) unseen data, with the ideal accuracy being 0.5, indicating perfect unlearning.
 
 * **Normalized Machine Unlearning Score (NoMUS)**
-  - **Combined Metric**: NoMUS is introduced to evaluate unlearning performance, combining model utility and forgetting score. It is a weighted sum where 'lambda' balances the importance of model utility against forgetting performance. The score ranges between 0 (worst) and 1 (best), with higher scores indicating better unlearning.
+  - **Combined Metric**: NoMUS is introduced to evaluate unlearning performance, combining (1) model utility and (2) forgetting score. It is a weighted sum where 'lambda' balances the importance of model utility against forgetting performance. The NoMUS score ranges between 0 (worst) and 1 (best), with higher scores indicating better unlearning.
 
-
-## Source Codes
+#### Source Codes
 
 |MUFAC (multi-task)| [Total Experiments](https://github.com/ndb796/MachineUnlearning/blob/main/01_MUFAC/Machine_Unlearning_MUFAC_Full_Experiments.ipynb) | [Base Models (Original, Retrained)](https://github.com/ndb796/MachineUnlearning/blob/main/01_MUFAC/Machine_Unlearning_MUFAC_Base_Models.ipynb) |  [Fine-tuning(Standard Fine-tuning, CF-3)](https://github.com/ndb796/MachineUnlearning/blob/main/01_MUFAC/Machine_Unlearning_MUFAC_FineTuing.ipynb)   | [NegGrad(Standard NegGrad, Advanced NegGrad)](https://github.com/ndb796/MachineUnlearning/blob/main/01_MUFAC/Machine_Unlearning_MUFAC_NegGrad.ipynb) | [UNSIR](https://github.com/ndb796/MachineUnlearning/blob/main/01_MUFAC/Machine_Unlearning_MUFAC_UNSIR.ipynb)  | [SCRUB](https://github.com/ndb796/MachineUnlearning/blob/main/01_MUFAC/Machine_Unlearning_MUFAC_SCRUB.ipynb) |
 |------------------|------------------|--------------------------------------------------|-------|-------------|-----------------|-------|
@@ -41,7 +52,7 @@ Our machine unlearning Benchmark is evaluated on two key aspects: **model utilit
 |**<div align="center">MUCAC (binary-class)</div>**| [<div align="center">**Total Experiments**</div>](https://github.com/ndb796/MachineUnlearning/blob/main/02_MUCAC/binay_classification/Machine_Unlearning_MUCAC_Binary_Cls_Full_Experiments.ipynb) | [<div align="center">**Base Models (Original, Retrained)**</div>](https://github.com/ndb796/MachineUnlearning/blob/main/02_MUCAC/binay_classification/Machine_Unlearning_MUCAC_Binary_Cls_Base_Models.ipynb) |  [<div align="center">**Fine-tuning(Standard Fine-tuning, CF-3)**</div>](https://github.com/ndb796/MachineUnlearning/blob/main/02_MUCAC/binay_classification/Machine_Unlearning_MUCAC_Binary_Cls_FineTuning.ipynb)   | [<div align="center">**NegGrad(Standard NegGrad, Advanced NegGrad)**</div>](https://github.com/ndb796/MachineUnlearning/blob/main/02_MUCAC/binay_classification/Machine_Unlearning_MUCAC_Binary_Cls_NegGrad.ipynb) | [**UNSIR**](https://github.com/ndb796/MachineUnlearning/blob/main/02_MUCAC/binay_classification/Machine_Unlearning_MUCAC_Binary_Cls_UNSIR.ipynb)  | [**SCRUB**](https://github.com/ndb796/MachineUnlearning/blob/main/02_MUCAC/binay_classification/Machine_Unlearning_MUCAC_Binary_Cls_SCRUB.ipynb) |
 
 
-## Models Performance 
+#### Models Performance 
 > Detailed performance comparisons of various state-of-the-art unlearning methods applied to our **MUFAC** and **MUCAC** datasets, using a ResNet18 model trained from scratch.
 
  [Download Original Models for Implementations](https://drive.google.com/drive/folders/1PCj-f2KV7XDiQJEzce0aDRasmjVkb9CN?usp=sharing)
@@ -98,5 +109,5 @@ Our machine unlearning Benchmark is evaluated on two key aspects: **model utilit
 | <div align="center">Final Score</div>     | <div align="center">0.9088</div> | <div align="center">0.8901</div>  | <div align="center">0.9147</div> | <div align="center">0.9103</div> | <div align="center">0.5353</div> | <div align="center">0.8901</div>       | <div align="center">0.9017</div>      | <div align="center">0.9036</div>| <div align="center">0.7647</div>         |
 
 
-## Citation
->
+#### Citation
+> To be continued...
