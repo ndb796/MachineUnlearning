@@ -19,10 +19,6 @@
 
 #### Datasets
 
-* The illustration of our MUFAC benchmark:
-
-<img src="./resources/image_3.jpg" width=360px/>
-
 * [**MUFAC** (Machine Unlearning for Facial Age Classifier)](https://postechackr-my.sharepoint.com/:u:/g/personal/dongbinna_postech_ac_kr/EbMhBPnmIb5MutZvGicPKggBWKm5hLs0iwKfGW7_TwQIKg)
   * A multi-class age classification dataset based on AI HUB, featuring over 13,000 Asian facial images with annotations for age groups and personal identities, ideal for machine unlearning research.
  <p align="center"><img src="./resources/MUFAC.png" style="width: 90%;"/></p>
@@ -43,6 +39,11 @@ Our machine unlearning Benchmark is evaluated on two key aspects: **model utilit
 
 * **Normalized Machine Unlearning Score (NoMUS)**
   - **Combined Metric**: NoMUS is introduced to evaluate unlearning performance, combining (1) model utility and (2) forgetting score. It is a weighted sum where 'lambda' balances the importance of model utility against forgetting performance. The NoMUS score ranges between 0 (worst) and 1 (best), with higher scores indicating better unlearning.
+
+
+* The illustration of our MUFAC benchmark:
+
+<img src="./resources/image_3.jpg" width=360px/>
 
 #### Source Codes
 
