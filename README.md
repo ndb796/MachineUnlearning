@@ -1,4 +1,7 @@
 ## Towards Machine Unlearning Benchmarks: Forgetting the Personal Identities in Facial Recognition Systems
+
+[![arXiv](https://img.shields.io/badge/arXiv-2311.02240-b31b1b.svg)](https://arxiv.org/abs/2311.02240)
+
 * This repository provides **practical benchmark datasets** and **PyTorch implementations for Machine Unlearning**, enabling the construction of privacy-crucial AI systems by forgetting specific data instances without changing the original model utility.
 
 ### Authors
@@ -21,11 +24,11 @@
 
 * [**MUFAC** (Machine Unlearning for Facial Age Classifier)](https://postechackr-my.sharepoint.com/:u:/g/personal/dongbinna_postech_ac_kr/EbMhBPnmIb5MutZvGicPKggBWKm5hLs0iwKfGW7_TwQIKg)
   * A multi-class age classification dataset based on AI HUB, featuring over 13,000 Asian facial images with annotations for age groups and personal identities, ideal for machine unlearning research.
- <p align="center"><img src="./resources/MUFAC.png" style="width: 90%;"/></p>
+<img src="./resources/MUFAC.png" width=800px/>
  
 * [**MUCAC** (Machine Unlearning for Celebrity Attribute Classifier)](https://github.com/ndb796/CelebA-HQ-Face-Identity-and-Attributes-Recognition-PyTorch)
   * A multi-label facial attribute classification dataset based on CelebA, expanded to 30,000 images and enriched with personal identity annotations to support unlearning algorithms.
- <p align="center"><img src="./resources/MUCAC.png" style="width: 90%; ;"/></p>
+<img src="./resources/MUCAC.png" width=800px/>
 
 ### Evaluation Metrics
 
@@ -43,7 +46,7 @@ Our machine unlearning Benchmark is evaluated on two key aspects: **model utilit
 
 * The illustration of our MUFAC benchmark:
 
-<img src="./resources/image_3.jpg" width=360px/>
+<img src="./resources/image_3.jpg" width=400px/>
 
 ### Source Codes
 
@@ -111,4 +114,14 @@ Our machine unlearning Benchmark is evaluated on two key aspects: **model utilit
 
 
 #### Citation
-> To be continued...
+
+<pre>
+@misc{choi2023machine,
+      title={Towards Machine Unlearning Benchmarks: Forgetting the Personal Identities in Facial Recognition Systems}, 
+      author={Dasol Choi and Dongbin Na},
+      year={2023},
+      eprint={2311.02240},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+</pre>
