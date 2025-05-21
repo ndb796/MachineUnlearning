@@ -23,12 +23,20 @@
 
 ### Datasets
 
-* [**MUFAC** (Machine Unlearning for Facial Age Classifier)](https://postechackr-my.sharepoint.com/:u:/g/personal/dongbinna_postech_ac_kr/EbMhBPnmIb5MutZvGicPKggBWKm5hLs0iwKfGW7_TwQIKg)
-  * A multi-class age classification dataset based on AI HUB, featuring over 13,000 Asian facial images with annotations for age groups and personal identities, ideal for machine unlearning research.
+* **MUFAC** (Machine Unlearning for Facial Age Classifier)  
+  - A multi-class age classification dataset based on AI HUB, featuring over 13,000 Asian facial images with annotations for age groups and personal identities, ideal for machine unlearning research.
+
+  🔗 [Download via Hugging Face (Dasool/MUFAC)](https://huggingface.co/datasets/Dasool/MUFAC)
+  > ⚠️ **Note**: This version is cleaned (e.g., duplicates removed) but retains the original 128×128 resolution from the source dataset.  
+  > As such, results may slightly differ from those in the paper.
+
 <img src="./resources/MUFAC.png" width=800px/>
  
-* [**MUCAC** (Machine Unlearning for Celebrity Attribute Classifier)](https://github.com/ndb796/CelebA-HQ-Face-Identity-and-Attributes-Recognition-PyTorch)
-  * A multi-label facial attribute classification dataset based on CelebA, expanded to 30,000 images and enriched with personal identity annotations to support unlearning algorithms.
+* **MUCAC** (Machine Unlearning for Celebrity Attribute Classifier)
+  
+  - A multi-label facial attribute classification dataset based on CelebA, expanded to 30,000 images and enriched with personal identity annotations to support unlearning algorithms.
+
+  🔗 [Download via GitHub](https://github.com/ndb796/CelebA-HQ-Face-Identity-and-Attributes-Recognition-PyTorch)
 <img src="./resources/MUCAC.png" width=800px/>
 
 ### Evaluation Metrics
@@ -126,3 +134,7 @@ Our machine unlearning Benchmark is evaluated on two key aspects: **model utilit
       primaryClass={cs.CV}
 }
 </pre>
+
+## 🙏 Acknowledgements
+We thank [@cspartalis](https://github.com/cspartalis) for sharing the data cleaning script via GitHub Issues, which helped construct the MUFAC-clean version.
+
